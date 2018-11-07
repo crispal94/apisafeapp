@@ -18,6 +18,7 @@ class CreateReferencialesTable extends Migration
             $table->unsignedInteger('id_tipo');
             $table->foreign('id_tipo')->references('id')->on('tipo_referenciales');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

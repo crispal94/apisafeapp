@@ -19,6 +19,8 @@ class CreateConsejosTable extends Migration
             $table->foreign('id_estadoanimo')->references('id')->on('estadoanimo');
             $table->string('descripcion',150);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

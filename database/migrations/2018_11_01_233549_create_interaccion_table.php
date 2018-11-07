@@ -21,6 +21,7 @@ class CreateInteraccionTable extends Migration
             $table->foreign('id_referenciales')->references('id')->on('referenciales');
             $table->string('descripcion',150);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

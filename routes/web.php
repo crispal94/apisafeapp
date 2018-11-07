@@ -12,5 +12,21 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    $res['success'] = true;
+    $res['result'] = 'Hello world with lumen';
+    return response($res);
 });
+
+
+$router->post('/login', 'LoginController@index');
+$router->post('/register', 'UserController@register');
+$router->get('user/{id}', ['middleware' => 'auth', 'uses'=>'UserController@getUser']);
+
+/**
+ * Routes for resource post
+ */
+$router->get('post', 'PostsController@all');
+$router->get('post/{id}', 'PostsController@get');
+$router->post('post', 'PostsController@addPost');
+$router->put('post/{id}', 'PostsController@put');
+$router->delete('post/{id}', 'PostsController@remove');

@@ -17,6 +17,7 @@ class CreateTipoReferencialesTable extends Migration
             $table->increments('id');
             $table->string('descripcion', 150);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

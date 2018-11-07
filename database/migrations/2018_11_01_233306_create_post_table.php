@@ -26,6 +26,7 @@ class CreatePostTable extends Migration
             $table->string('descripcion',150);
             $table->char('est_comentario', 1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -20,6 +20,7 @@ class CreateImagen extends Migration
             $table->string('descripcion', 150);
             $table->string('url', 150);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

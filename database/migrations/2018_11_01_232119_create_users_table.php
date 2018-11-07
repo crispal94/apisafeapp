@@ -19,11 +19,14 @@ class CreateUsersTable extends Migration
             $table->foreign('id_imagen')->references('id')->on('imagen');
              $table->string('nombres', 150);
               $table->string('apellidos', 150);
-             $table->string('password', 150);
+             $table->string('password');
+             $table->string('api_token');
              $table->string('nickname', 150);
-             $table->string('email', 150);
+             $table->string('email',150)->unique();
              $table->integer('telefono');
+            $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

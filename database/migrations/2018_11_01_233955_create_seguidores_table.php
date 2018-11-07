@@ -18,6 +18,7 @@ class CreateSeguidoresTable extends Migration
             $table->integer('id_user_padre');
             $table->integer('id_user_seguidor');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
