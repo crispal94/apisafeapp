@@ -1,8 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
+
+
 use Illuminate\Http\Request;
 use App\User;
+use App\Seguidores;
 
 class UserController extends Controller
 {
@@ -57,5 +60,16 @@ class UserController extends Controller
 
           return response($res);
         }
+    }
+
+
+    public function postfollower(Request $request){
+      $idpadre = $request->input('idpadre');
+      $idhijo = $request->input('idhijo');
+      $follower = new Seguidores();
+      $follower->id_user_padre = $idpadre;
+      $follower->id_user_seguidor = $idhijo;
+      $follower->save();
+      return response()->json(['success'=>true,'message'=>'Seguidor creado con exito']);
     }
 }

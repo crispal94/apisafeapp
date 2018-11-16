@@ -3,11 +3,12 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Post extends Model {
 
-    use SoftDeletes;
+class Estadoanimo extends Model {
 
-	 protected $table = 'post';
+        use SoftDeletes;
+
+        protected $table = 'estadoanimo';
 
     protected $fillable = [];
 
@@ -18,10 +19,5 @@ class Post extends Model {
     ];
 
     // Relationships
-
-    public function imagen()
-    {
-        return $this->hasOne('App\Imagen','id', 'id_imagen');
-    }
 
 }
