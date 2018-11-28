@@ -57,7 +57,10 @@ $app->delete('consejos/{id}', 'ConsejosController@remove');*/
  */
 $router->get('historias', 'HistoriasController@all');
 $router->get('historias/{id}', 'HistoriasController@get');
-$router->post('historias', 'HistoriasController@postHistoria');
+
 $router->put('historias/{id}', 'HistoriasController@put');
 $router->delete('historias/{id}', 'HistoriasController@remove');
+
+
 $router->get('gethistoriasxuser/{id}','HistoriasController@getHistoriasxUser');
+$router->post('historias', 'HistoriasController@postHistoria');

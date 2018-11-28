@@ -27,6 +27,8 @@ $app = new Laravel\Lumen\Application(
 
  $app->withEloquent();
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -81,11 +83,18 @@ $app->routeMiddleware([
   $app->register(App\Providers\AppServiceProvider::class);
    $app->register(App\Providers\AuthServiceProvider::class);
    $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+   $app->register(Barryvdh\Cors\ServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 if (env('APP_DEBUG')) {
  $app->register(Barryvdh\Debugbar\LumenServiceProvider::class);
 }
 $app->configure('debugbar');
+$app->configure('cors');
+
+$app->middleware([
+    // ...
+    \Barryvdh\Cors\HandleCors::class,
+]);
 
 /*
 
