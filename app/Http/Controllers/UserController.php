@@ -25,14 +25,17 @@ class UserController extends Controller
         $nombres = $request->input('nombres');
         $apellidos = $request->input('apellidos');
         $nickname = $request->input('nickname');
+        $genero = $request->input('genero');
         $telefono = $request->input('telefono');
         $password = $hasher->make($request->input('password'));
+
         $user = User::create([
             'nombres' => $nombres,
             'apellidos' => $apellidos,
             'nickname' => $nickname,
             'telefono' => $telefono,
             'email' => $email,
+            'genero' => $genero,
             'password' => $password,
         ]);
 
