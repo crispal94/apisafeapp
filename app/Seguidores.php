@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Seguidores extends Model {
 
 
-    protected $table = 'Seguidores';
+    protected $table = 'seguidores';
 
     protected $fillable = [];
 
