@@ -30,7 +30,7 @@ class HistoriasController extends Controller {
     $mod_date = strtotime($historia->vigencia_inicio."+ 1 days");
     $historia->vigencia_fin = date("Y-m-d H:i:s",$mod_date);
 
-    $destinationPath = 'C:\xampp\htdocs\apisafeapp\public\img-historia';
+    $destinationPath = '/var/www/html/apisafeapp/public/img-historia';
     $nombreimagen = $nextsecuencial.date("Y-m-d").'.jpg';
     //var_dump($nombreimagen);
     $url = $destinationPath.DIRECTORY_SEPARATOR.$nombreimagen;

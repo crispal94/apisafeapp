@@ -44,7 +44,7 @@ public function addPost(Request $request){
   $imagen->id_user = $iduser;
   $imagen->save();
 
-  $destinationPath = 'C:\xampp\htdocs\apisafeapp\public';
+  $destinationPath = '/var/www/html/apisafeapp/public';
   $file->move($destinationPath,$nombreimagen);
 
   $post = new Post;
@@ -69,7 +69,7 @@ public function addPost(Request $request){
     $imagen->id_user = $iduser;
     $imagen->save();
 
-    $destinationPath = 'C:\xampp\htdocs\apisafeapp\public';
+    $destinationPath = '/var/www/html/apisafeapp/public';
     $file->move($destinationPath,$nombreimagen);
 
     $post = new Post;
