@@ -14,9 +14,9 @@ class LoginController extends Controller
     {
         $hasher = app()->make('hash');
 
-        $email = $request->input('email');
+        $credential = $request->input('credential');
         $password = $request->input('password');
-        $login = User::where('email', $email)->first();
+        $login = User::where('email', $credential)->orWhere('nickname',$credential)->first();
 
         if ( ! $login) {
             $res['success'] = false;
