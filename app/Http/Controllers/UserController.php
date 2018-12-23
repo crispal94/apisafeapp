@@ -65,6 +65,11 @@ class UserController extends Controller
         }
     }
 
+    public function getallusers(Request $request){
+      $users = User::all();
+      return response()->json($users);
+    }
+
 
     public function postfollower(Request $request){
       $idpadre = $request->input('idpadre');

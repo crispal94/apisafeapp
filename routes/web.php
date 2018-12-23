@@ -24,6 +24,7 @@ $router->post('/login', 'LoginController@index');
 $router->post('/register', 'UserController@register');
 $router->get('user/{id}', ['middleware' => 'auth', 'uses'=>'UserController@getUser']);
 $router->post('postfollower','UserController@postfollower');
+$router->get('getallusers','UserController@getallusers');
 
 /**
  * Routes for resource post
