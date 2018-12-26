@@ -43,6 +43,7 @@ $router->delete('post/{id}', 'PostsController@remove');
 
 
 $router->get('getconsejo/{id}','ConsejosController@getConsejo');
+$router->get('getallestados','ConsejosController@getEstados');
 
 /**
  * Routes for resource consejos

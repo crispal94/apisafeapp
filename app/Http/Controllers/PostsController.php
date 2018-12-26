@@ -16,7 +16,7 @@ class PostsController extends Controller {
 
 public function addPost(Request $request){
   $iduser = $request->input('iduser');
-  $flag = $request->input('tipo');
+  //$flag = $request->input('tipo');
   $file = $request->file('file');
   $idestado = $request->input('idestado');
   $descripcion = $request->input('descripcion');
@@ -24,17 +24,17 @@ public function addPost(Request $request){
 
   //SI ES TIPO 1 ES TEXTO, TIPO 2 ES IMAGEN, TIPO 3 IMAGEN Y TEXTO
 
-  if($flag==1){
+  if($file==null&&$descripcion!=null){
   $post = new Post;
   $post->id_user = $iduser;
-  $post->id_referenciales = $flag;
+  $post->id_referenciales = 1;
   $post->id_estadoanimo = $idestado;
   $post->descripcion = $descripcion;
   $post->est_comentario = $estcomentario;
   $post->save();
   $array = ['success'=>true,'message'=>'Post creado con exito'];
   return response()->json($array);
-}else if($flag==2){
+}else if($file!=null&&$descripcion==null){
 
   $idfinal = Imagen::where('id_user',$iduser)->max('id');
   $imagen = new Imagen;
@@ -49,7 +49,7 @@ public function addPost(Request $request){
 
   $post = new Post;
   $post->id_user = $iduser;
-  $post->id_referenciales = $flag;
+  $post->id_referenciales = 2;
   $post->id_imagen = $imagen->id;
   $post->descripcion = 'post con imagen';
   $post->id_estadoanimo = $idestado;
@@ -58,7 +58,7 @@ public function addPost(Request $request){
   $array = ['success'=>true,'message'=>'Post creado con exito'];
   return response()->json($array);
 
-  }else if($flag==3){
+}else if($file!=null&&$descripcion!=null){
     $idfinal = Imagen::where('id_user',$iduser)->max('secuencial_img');
     $nextsecuencial = $idfinal + 1;
     $imagen = new Imagen;
@@ -74,7 +74,7 @@ public function addPost(Request $request){
 
     $post = new Post;
     $post->id_user = $iduser;
-    $post->id_referenciales = $flag;
+    $post->id_referenciales = 3;
     $post->id_imagen = $imagen->id;
     $post->descripcion = $descripcion;
     $post->id_estadoanimo = $idestado;
