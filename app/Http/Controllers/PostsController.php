@@ -44,7 +44,7 @@ public function addPost(Request $request){
   $imagen->id_user = $iduser;
   $imagen->save();
 
-  $destinationPath = '/var/www/html/apisafeapp/public';
+  $destinationPath = '/var/www/html/apisafeapp/public/img-post';
   $file->move($destinationPath,$nombreimagen);
 
   $post = new Post;
@@ -69,7 +69,7 @@ public function addPost(Request $request){
     $imagen->id_user = $iduser;
     $imagen->save();
 
-    $destinationPath = '/var/www/html/apisafeapp/public';
+    $destinationPath = '/var/www/html/apisafeapp/public/img-post';
     $file->move($destinationPath,$nombreimagen);
 
     $post = new Post;
@@ -106,8 +106,9 @@ public function getPost(Request $request,$id){
       $estadoanimo = Estadoanimo::find($post->id_estadoanimo);
       $tmp['estadoanimo'] = $estadoanimo->descripcion;
       array_push($jsontotal,$tmp);
+      $cont = count($posts);
     }
-    return response()->json($jsontotal);
+    return response()->json(['success'=>true,'totalposts'=>$cont,'data'=>$jsontotal]);
 }
 
 
