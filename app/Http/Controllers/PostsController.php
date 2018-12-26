@@ -89,7 +89,7 @@ public function addPost(Request $request){
 
 
 public function getPost(Request $request,$id){
-    $posts = Post::where('id_user',$id)->orderBy('created_at',desc)->get();
+    $posts = Post::where('id_user',$id)->orderBy('created_at','desc')->get();
     $jsontotal = [];
     foreach ($posts as $post) {
       $tmp = [];
