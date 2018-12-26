@@ -97,7 +97,11 @@ public function getPost(Request $request,$id){
       $referencial = Referenciales::find($post->id_referenciales);
       $tmp['tipo_post'] = $referencial->descripcion;
       $tmp['contenido'] = $post->descripcion;
+      if($post->imagen->descripcion){
       $imagen = $post->imagen->descripcion;
+      }else{
+      $imagen = 'post sin imagen';
+      }
       $tmp['imagen'] = $imagen;
       $estadoanimo = Estadoanimo::find($post->id_estadoanimo);
       $tmp['estadoanimo'] = $estadoanimo->descripcion;
