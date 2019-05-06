@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-
 use App\Comentarios;
 use App\Estadoanimo;
 use App\Imagen;
@@ -11,7 +10,6 @@ use App\Seguidores;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Carbon\Carbon;
 
 class PostsController extends Controller
 {
@@ -116,7 +114,6 @@ class PostsController extends Controller
 
     public function getPostAll()
     {
-
 /*        $id_user = $request->input('id_user');
         $followers = Seguidores::where('id_user_padre', $id_user)->get();
         $array_users = [];
@@ -126,17 +123,13 @@ class PostsController extends Controller
         array_push($array_users, $id_user);
         $posts = Post::whereIn('id_user', $array_users)->get();
         //dd($posts);*/
-	$posts = Post::orderBy('id' , 'desc')->get();
-        $today = Carbon::now()->toDateString();
+	$posts = Post::all();
         $jsontotal = [];
         foreach ($posts as $post) {
             $tmp = [];
 	    $user = User::where('id' , $post->id_user)->get();
 	    $tmp['user'] = $user[0]->nickname;
             $tmp['fecha'] = $post->created_at->toDateString();
-//	    $tmp['day'] 
-	    $x = Carbon::parse($post->created_at);
-	    $tmp['days'] = $x->diffInDays($today);
             $referencial = Referenciales::find($post->id_referenciales);
             $tmp['tipo_post'] = $referencial->descripcion;
             $tmp['contenido'] = $post->descripcion;
@@ -148,7 +141,9 @@ class PostsController extends Controller
             $tmp['imagen'] = $imagen;
             $estadoanimo = Estadoanimo::find($post->id_estadoanimo);
             $tmp['estadoanimo'] = $estadoanimo->descripcion;
-            array_push($jsontotal, $tmp);
+	    $tmp2 = ksort($tmp);
+            array_push($jsontotal, $tmp
+);
         }
 
         return response()->json($jsontotal);
